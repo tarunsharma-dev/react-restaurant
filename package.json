@@ -1,0 +1,29 @@
+{
+  "name": "restaurant-app",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/tarunsharma-dev/react-restaurant#readme",
+  "bugs": {
+    "url": "https://github.com/tarunsharma-dev/react-restaurant/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tarunsharma-dev/react-restaurant.git"
+  },
+  "license": "ISC",
+  "author": "Tarun Sharma",
+  "type": "commonjs",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.13.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
