@@ -25,3 +25,25 @@ Inginting react using React CDN
 # JSX - Escape
 
 - JSX using escape behind the scene or sanitize the data when we call api, and render data in jsx like {data}
+
+/\*\*
+
+-
+- Header
+- - Logo
+- - Nav Items
+- Body
+- - Main Content
+- - Search
+- - RestaurantContainer
+- - RestaurantCard
+- Footer
+- - Copyright
+- - Links
+- - Address
+- - Contact
+    \*/
+
+# React Hooks
+
+- useState() => whenever state variable update react will re-render our component
