@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import restaurantList from "../utils/mockData";
 import { useEffect, useState } from "react";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   //   console.log(restaurantList[0].info);
@@ -35,7 +36,15 @@ const Body = () => {
     );
   };
 
-  console.log("called body", resList);
+  // console.log("called body", resList);
+
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false)
+    return (
+      <h1>
+        Looks like you're offline!! Please check your internet connectivity.
+      </h1>
+    );
 
   return resList === undefined || resList.length === 0 ? (
     <div>Loading...</div>
