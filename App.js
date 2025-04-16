@@ -9,20 +9,32 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
 // import RestaurantMenu from "./src/components/RestaurantMenu";
 import { lazy, Suspense } from "react";
 // import { FlappyBirdGame } from "./src/flappybird/FlappyBirdGame";
+import "./index.css";
+import Main from "./src/Main";
+import Shimmer from "./src/components/Shimmer";
+import RestaurantMenu from "./src/components/RestaurantMenu";
 
 const Body = lazy(() => import("./src/components/Body"));
 const About = lazy(() => import("./src/components/About"));
 const Contact = lazy(() => import("./src/components/Contact"));
-const RestaurantMenu = lazy(() => import("./src/components/RestaurantMenu"));
+// const RestaurantMenu = lazy(() => import("./src/components/RestaurantMenu"));
 const AppLayout = () => {
   return (
-    <main>
-      <Header />
-      <Outlet />
-      <Footer />
-      {/* <FlappyBirdGame /> */}
-    </main>
+    <div className="flex justify-center mx-auto">
+      <Main>
+        <Header />
+        <div className="py-4">
+          <Outlet />
+        </div>
+        {/* <Footer /> */}
+        {/* <FlappyBirdGame /> */}
+      </Main>
+    </div>
   );
+};
+
+const ShimmerUI = () => {
+  return <Shimmer column={15} />;
 };
 
 const router = createBrowserRouter([
@@ -33,7 +45,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: (
-          <Suspense fallback={<h1>Loading Suspense</h1>}>
+          <Suspense fallback={<ShimmerUI />}>
             <Body />
           </Suspense>
         ),
@@ -41,7 +53,7 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: (
-          <Suspense fallback={<h1>Loading Suspense</h1>}>
+          <Suspense fallback={<ShimmerUI />}>
             <About />
           </Suspense>
         ),

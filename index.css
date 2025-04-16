@@ -1,4 +1,20 @@
-.header {
+/* @import "tailwindcss"; */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Button */
+.shad-button_primary {
+  @apply bg-amber-500 hover:bg-amber-600 rounded-md px-1.5 py-1 min-w-20 text-white flex gap-2 justify-center font-normal;
+}
+.shad-button_primary2 {
+  @apply bg-white hover:bg-gray-200 rounded-md px-1.5 py-1 min-w-20 text-green-600 shadow-lg flex gap-2 justify-center font-semibold border border-gray-100;
+}
+.shad-input_primary {
+  @apply focus:ring-1 focus:outline-none focus:rounded-r-[0] border rounded-md px-1.5 py-1 flex gap-2 justify-center font-normal;
+}
+
+/* .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,8 +53,6 @@ button {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 20px;
   padding: 20px;
-  /* max-width: 1920px; */
-  /* width: 100%; */
   margin: 0 auto;
 }
 
@@ -66,7 +80,6 @@ button {
 }
 .filter {
   display: flex;
-  /* justify-content: center; */
   margin: 20px 0;
 
   gap: 10px;
@@ -84,7 +97,6 @@ button {
       &:focus {
         outline: none;
       }
-      /* margin-right: 10px; */
     }
     button {
       border-top-left-radius: 0;
@@ -93,7 +105,7 @@ button {
       padding: 8.5px 20px;
     }
   }
-}
+} */
 
 /* Flappy Bird */
 

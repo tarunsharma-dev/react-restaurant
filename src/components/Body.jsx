@@ -1,7 +1,9 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import restaurantList from "../utils/mockData";
 import { useEffect, useState } from "react";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { Link } from "react-router";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   //   console.log(restaurantList[0].info);
@@ -18,6 +20,8 @@ const Body = () => {
 
     // return clearTimeout(timer);
   }, []);
+
+  const PromotedResCard = withPromotedLabel(RestaurantCard);
 
   const fetchData = async () => {
     const data = await fetch(
@@ -47,16 +51,18 @@ const Body = () => {
     );
 
   return resList === undefined || resList.length === 0 ? (
-    <div>Loading...</div>
+    <div className="body relative">
+      <Shimmer column={15} />
+    </div>
   ) : (
-    <div className="body">
+    <div className="body relative">
       <div>
-        <div className="filter">
-          <div className="search-box">
+        <div className="flex items-center gap-2">
+          <div className="search-box flex items-center">
             <input
               type="text"
               placeholder="search"
-              className=""
+              className="shad-input_primary sm:rounded-r-[0]"
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
             />
@@ -70,12 +76,13 @@ const Body = () => {
                 );
                 setFilterListData(res);
               }}
+              className="shad-button_primary sm:rounded-l-[0]"
             >
               Search
             </button>
           </div>
           <button
-            className="filter-btn"
+            className="shad-button_primary"
             onClick={() => {
               if (filterList === false) {
                 // console.log("list", filterList);
@@ -94,10 +101,21 @@ const Body = () => {
           </button>
         </div>
       </div>
-      <div className="res-container">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 py-4">
         {filterListData.map((resData) => (
           //   console.log(restaurantList[0].info),
-          <RestaurantCard key={resData.info?.id} resData={resData?.info} />
+          <Link
+            to={{ pathname: `/restaurant/${resData?.info?.id}` }}
+            key={resData.info?.id}
+            className="res-card hover:bg-gray-50 shadow-md hover:shadow-xl border border-gray-200 rounded-md overflow-hidden p-3"
+          >
+            {resData.info?.aggregatedDiscountInfoV3 ||
+            resData.info?.aggregatedDiscountInfoV2 ? (
+              <PromotedResCard resData={resData?.info} />
+            ) : (
+              <RestaurantCard resData={resData?.info} />
+            )}
+          </Link>
         ))}
       </div>
     </div>

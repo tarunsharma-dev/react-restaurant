@@ -5,20 +5,20 @@ import { Link } from "react-router";
 const Header = () => {
   const [loginStatus, setLoginStatus] = useState("Login");
   return (
-    <header className="header">
+    <header className="header flex justify-between items-center py-1.5 px-5">
       <Link
         to={{
           pathname: "/",
           // search: "?query=string",
           // hash: "#hash",
         }}
-        className="logo_container"
+        className="logo_container "
       >
-        <img alt="logo" src={LOGO_URL} className="logo" />
+        <img alt="logo" src={LOGO_URL} className="logo h-52 -my-16 -mx-8" />
       </Link>
       <nav className="nav-items">
-        <ul>
-          <li>
+        <ul className="flex items-center gap-3 text-lg font-medium">
+          <li className="p-2.5">
             <Link
               to={{
                 pathname: "/",
@@ -48,7 +48,7 @@ const Header = () => {
           <li>Cart</li>
           <li>
             <button
-              className="login-btn"
+              className="shad-button_primary"
               onClick={() => {
                 loginStatus === "Login"
                   ? setLoginStatus("Logout")
