@@ -6,7 +6,10 @@ function Shimmer({ column = 4 }) {
       {Array(column)
         .fill()
         .map((_, index) => (
-          <div className="res-card hover:bg-gray-50 shadow-md hover:shadow-xl border border-gray-100 rounded-md overflow-hidden p-3 h-[300px]">
+          <div
+            className="res-card hover:bg-gray-50 shadow-md hover:shadow-xl border border-gray-100 rounded-md overflow-hidden p-3 h-[300px]"
+            key={index}
+          >
             <div className="overflow-hidden relative rounded-md ">
               <div className="pb-[70%] h-0"></div>
               <div className="w-full h-full object-cover absolute inset-0 bg-gray-100" />

@@ -7,28 +7,39 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
 // import Contact from "./src/components/Contact";
 // import Error from "./src/components/Error";
 // import RestaurantMenu from "./src/components/RestaurantMenu";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 // import { FlappyBirdGame } from "./src/flappybird/FlappyBirdGame";
 import "./index.css";
 import Main from "./src/Main";
 import Shimmer from "./src/components/Shimmer";
 import RestaurantMenu from "./src/components/RestaurantMenu";
+import UserContext from "./src/context/UserContext";
 
 const Body = lazy(() => import("./src/components/Body"));
 const About = lazy(() => import("./src/components/About"));
 const Contact = lazy(() => import("./src/components/Contact"));
 // const RestaurantMenu = lazy(() => import("./src/components/RestaurantMenu"));
 const AppLayout = () => {
+  const [userName, setUserName] = useState("");
+  useEffect(() => {
+    const data = { name: "Tarun Sharma" };
+
+    setUserName(data.name);
+  }, []);
   return (
     <div className="flex justify-center mx-auto">
-      <Main>
-        <Header />
-        <div className="py-4">
-          <Outlet />
-        </div>
-        {/* <Footer /> */}
-        {/* <FlappyBirdGame /> */}
-      </Main>
+      <UserContext.Provider
+        value={{ loggedInUser: userName, setUserName: setUserName }}
+      >
+        <Main>
+          <Header />
+          <div className="py-4">
+            <Outlet />
+          </div>
+          {/* <Footer /> */}
+          {/* <FlappyBirdGame /> */}
+        </Main>
+      </UserContext.Provider>
     </div>
   );
 };

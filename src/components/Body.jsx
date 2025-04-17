@@ -1,9 +1,10 @@
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import restaurantList from "../utils/mockData";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { Link } from "react-router";
 import Shimmer from "./Shimmer";
+import UserContext from "../context/UserContext";
 
 const Body = () => {
   //   console.log(restaurantList[0].info);
@@ -12,6 +13,8 @@ const Body = () => {
   const [filterList, setFilterList] = useState(false);
   const [filterListData, setFilterListData] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+
+  const { loggedInUser, setUserName } = useContext(UserContext);
   // const [topRated, setTopRated] = useState(false);
 
   useEffect(() => {
@@ -99,6 +102,14 @@ const Body = () => {
           >
             Top Rated Restaurant
           </button>
+          <div>
+            <input
+              type="text"
+              className="shad-input_primary"
+              value={loggedInUser}
+              onChange={(e) => setUserName(e.target.value)}
+            />
+          </div>
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 py-4">
