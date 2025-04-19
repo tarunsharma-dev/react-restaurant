@@ -1,15 +1,16 @@
 import React from "react";
+import UserContext from "../context/UserContext";
 
 class UserClass extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = { count: 0, count2: 1 };
-    console.log(this.props.name + " child constructor");
+    // console.log(this.props.name + " child constructor");
   }
 
   componentDidMount() {
-    console.log(this.props.name + " child component did mount");
+    // console.log(this.props.name + " child component did mount");
     // this.timer = setInterval(() => {
     //   console.log("Start Interval");
     // }, 1000);
@@ -17,21 +18,21 @@ class UserClass extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.count !== prevState.count) {
-      console.log("count change ", this.state.count);
+      // console.log("count change ", this.state.count);
     }
-    console.log("component did update");
+    // console.log("component did update");
   }
 
   componentWillUnmount() {
     // clearInterval(this.timer);
-    console.log("component will unmount");
+    // console.log("component will unmount");
   }
   render() {
-    console.log(this.props.name + " child render");
+    // console.log(this.props.name + " child render");
     return (
       <div>
-        <h2>Count: {this.state.count}</h2>
-        <h2>Count: {this.state.count2}</h2>
+        {/* <h2>Count: {this.state.count}</h2>
+        <h2>Count: {this.state.count2}</h2> */}
         <button
           onClick={() => {
             this.setState({
@@ -42,6 +43,13 @@ class UserClass extends React.Component {
         >
           Add Count
         </button>
+        <div>
+          <UserContext.Consumer>
+            {(data) => {
+              return <h2>Login User: {data.loggedInUser}</h2>;
+            }}
+          </UserContext.Consumer>
+        </div>
         <h2>Name: {this.props.name}</h2>
         <h3>Location: {this.props.location}</h3>
         <h4>Contact: tarun@gmail.com</h4>

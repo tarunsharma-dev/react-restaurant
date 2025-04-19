@@ -28,9 +28,7 @@ const AppLayout = () => {
   }, []);
   return (
     <div className="flex justify-center mx-auto">
-      <UserContext.Provider
-        value={{ loggedInUser: userName, setUserName: setUserName }}
-      >
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
         <Main>
           <Header />
           <div className="py-4">
