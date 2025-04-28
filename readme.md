@@ -47,3 +47,12 @@ Inginting react using React CDN
 # React Hooks
 
 - useState() => whenever state variable update react will re-render our component
+
+# Redux Toolkit
+
+- Install @reduxjs/toolkit and react-redux
+- Build our store
+- Connect our app with our store
+- Slice (cartSlice)
+- Dispatch(action)
+- Selector

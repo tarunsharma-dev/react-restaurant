@@ -46,6 +46,7 @@ const RestaurantMenu = () => {
       {/* <div style={{ width: "300px" }}>
         <img
           alt="restaurant"
+          loading="lazy"
           src={CDN_URL + cloudinaryImageId}
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />

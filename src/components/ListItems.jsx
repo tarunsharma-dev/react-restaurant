@@ -1,7 +1,22 @@
 import { CDN_URL_MENU } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/slice/cartSlice";
 
 const ListItems = ({ listData }) => {
-  //   console.log(listData);
+  const dispatch = useDispatch();
+
+  const handleAddItem = (item) => {
+    // dispatch(
+    //   addItem({
+    //     id: item?.card?.info?.id,
+    //     name: item?.card?.info?.name,
+    //     price: item?.card?.info?.price || item?.card?.info?.defaultPrice,
+    //     description: item?.card?.info?.description,
+    //     imageId: item?.card?.info?.imageId,
+    //   })
+    // );
+    dispatch(addItem(item));
+  };
 
   return (
     <div className="divide-y divide-gray-200">
@@ -31,12 +46,19 @@ const ListItems = ({ listData }) => {
               <div className="w-[150px] h-[150px] rounded-xl overflow-hidden shadow-md border border-gray-100">
                 <img
                   alt="restaurant"
+                  loading="lazy"
+                  srcSet={`${CDN_URL_MENU + list?.card?.info?.imageId} 300w, ${
+                    CDN_URL_MENU + list?.card?.info?.imageId
+                  } 600w, ${CDN_URL_MENU + list?.card?.info?.imageId} 900w`}
                   src={CDN_URL_MENU + list?.card?.info?.imageId}
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto object-cover"
                 />
               </div>
               <div className="absolute -bottom-4 left-1/2 -translate-x-1/2">
-                <button className="shad-button_primary2 flex items-center">
+                <button
+                  className="shad-button_primary2 flex items-center"
+                  onClick={() => handleAddItem(list)}
+                >
                   Add +
                 </button>
               </div>
