@@ -19,6 +19,7 @@ const Header = () => {
     (sum, item) => sum + (item.price || 0) * (item.quantity || 1),
     0
   );
+  console.log(cartItems);
 
   return (
     <header className="header flex justify-between items-center py-1.5 px-5">

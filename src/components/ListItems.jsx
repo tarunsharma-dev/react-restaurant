@@ -51,13 +51,15 @@ const ListItems = ({ listData }) => {
                     CDN_URL_MENU + list?.card?.info?.imageId
                   } 600w, ${CDN_URL_MENU + list?.card?.info?.imageId} 900w`}
                   src={CDN_URL_MENU + list?.card?.info?.imageId}
-                  className="w-full h-auto object-cover"
+                  className="w-full h-full object-cover"
                 />
               </div>
               <div className="absolute -bottom-4 left-1/2 -translate-x-1/2">
                 <button
                   className="shad-button_primary2 flex items-center"
                   onClick={() => handleAddItem(list)}
+                  // onClick={handleAddItem(list)}
+                  // onClick={handleAddItem()}
                 >
                   Add +
                 </button>

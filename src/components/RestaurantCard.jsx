@@ -17,7 +17,7 @@ const RestaurantCard = (props) => {
             CDN_URL + cloudinaryImageId
           } 400w, ${CDN_URL + cloudinaryImageId} 400w`}
           src={CDN_URL + cloudinaryImageId}
-          className="w-full h-auto object-cover absolute inset-0"
+          className="w-full h-full object-cover absolute inset-0"
         />
       </div>
       <div className="res-info py-3">
